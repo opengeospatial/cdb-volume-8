@@ -1,0 +1,14 @@
+[appendix]
+:appendix-caption: Annex
+== Revision History
+
+[width="90%",options="header"]
+|===
+|Date |Release |Editor | Primary clauses modified |Description
+|2016-02-05 |1.0 |C. Reed |Various |Prepare as version 1.
+|2016-08-03 |1.0 |C. Reed |Various |Modify based on 2016-03-08 SWG discussions
+|2016-06-22 |1.0r2 |C.Reed |Various |Correct ambiguity WRT how altitude is defined.
+|2016-07-10 |R3 |C. Reed |Various |Final edits for publication
+|2016-11-21 |1.0 |C. Reed | |Ready for publication
+|2017-12-28 |1.1 |C. Reed |Minimal |Update for version 1.1. Very minor edits.
+|===

@@ -1,0 +1,519 @@
+______________________________________________________________________________________
+*Open Geospatial Consortium *
+
+Submission Date: 2018-03-20
+
+Approval Date:   2018-08-27
+
+Publication Date:   2018-dd-mm
+
+External identifier of this OGC^®^ document: http://www.opengis.net/doc/BP/CDB-SRF/1.1
+
+Internal reference number of this OGC^®^ document:    16-011r4
+
+Version: 1.1
+
+Category: OGC^®^ Best Practice
+
+Editor:   Carl Reed
+
+Volume 8: CDB Spatial and Coordinate Reference Systems Guidance
+
+*Copyright notice*
+
+Copyright © 2018 Open Geospatial Consortium +
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
+
+*Warning*
+______________________________________________________________________________________
+
+This document defines an OGC Best Practices on a particular technology or approach related to an OGC standard. This document is not an OGC Standard and may not be referred to as an OGC Standard. It is subject to change without notice. However, this document is an official position of the OGC membership on this particular technology topic.
+
+______________________________________
+Document type:    OGC^®^ Best Practice
+
+Document subtype:   
+
+Document stage:    Approved
+
+Document language:  English
+______________________________________
+
+ +
+License Agreement
+
+Permission is hereby granted by the Open Geospatial Consortium, ("Licensor"), free of charge and subject to the terms set forth below, to any person obtaining a copy of this Intellectual Property and any associated documentation, to deal in the Intellectual Property without restriction (except as set forth below), including without limitation the rights to implement, use, copy, modify, merge, publish, distribute, and/or sublicense copies of the Intellectual Property, and to permit persons to whom the Intellectual Property is furnished to do so, provided that all copyright notices on the intellectual property are retained intact and that each person to whom the Intellectual Property is furnished agrees to the terms of this Agreement.
+
+If you modify the Intellectual Property, all copies of the modified Intellectual Property must include, in addition to the above copyright notice, a notice that the Intellectual Property includes modifications that have not been approved or adopted by LICENSOR.
+
+THIS LICENSE IS A COPYRIGHT LICENSE ONLY, AND DOES NOT CONVEY ANY RIGHTS UNDER ANY PATENTS THAT MAY BE IN FORCE ANYWHERE IN THE WORLD.
+
+THE INTELLECTUAL PROPERTY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE DO NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE INTELLECTUAL PROPERTY WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE INTELLECTUAL PROPERTY WILL BE UNINTERRUPTED OR ERROR FREE. ANY USE OF THE INTELLECTUAL PROPERTY SHALL BE MADE ENTIRELY AT THE USER’S OWN RISK. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR ANY CONTRIBUTOR OF INTELLECTUAL PROPERTY RIGHTS TO THE INTELLECTUAL PROPERTY BE LIABLE FOR ANY CLAIM, OR ANY DIRECT, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM ANY ALLEGED INFRINGEMENT OR ANY LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR UNDER ANY OTHER LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH THE IMPLEMENTATION, USE, COMMERCIALIZATION OR PERFORMANCE OF THIS INTELLECTUAL PROPERTY.
+
+This license is effective until terminated. You may terminate it at any time by destroying the Intellectual Property together with all copies in any form. The license will also terminate if you fail to comply with any term or condition of this Agreement. Except as provided in the following sentence, no such termination of this license shall require the termination of any third party end-user sublicense to the Intellectual Property which is in force as of the date of notice of such termination. In addition, should the Intellectual Property, or the operation of the Intellectual Property, infringe, or in LICENSOR’s sole opinion be likely to infringe, any patent, copyright, trademark or other right of a third party, you agree that LICENSOR, in its sole discretion, may terminate this license without any compensation or liability to you, your licensees or any other party. You agree upon termination of any kind to destroy or cause to be destroyed the Intellectual Property together with all copies in any form, whether held by you or by any third party.
+
+Except as contained in this notice, the name of LICENSOR or of any other holder of a copyright in all or part of the Intellectual Property shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Intellectual Property without prior written authorization of LICENSOR or such copyright holder. LICENSOR is and shall at all times be the sole entity that may authorize you or any third party to use certification marks, trademarks or other special designations to indicate compliance with any LICENSOR standards or specifications. This Agreement is governed by the laws of the Commonwealth of Massachusetts. The application to this Agreement of the United Nations Convention on Contracts for the International Sale of Goods is hereby expressly excluded. In the event any provision of this Agreement shall be deemed unenforceable, void or invalid, such provision shall be modified so as to make it valid and enforceable, and as so modified the entire Agreement shall remain in full force and effect. No decision, action or inaction by LICENSOR shall be construed to be a waiver of any rights or remedies available to it.
+
+= Contents
+
+link:#_Toc445727697[1. Scope 5]
+
+link:#conformance[2. Conformance 6]
+
+link:#references[3. References 6]
+
+link:#terms-and-definitions[4. Terms and Definitions 6]
+
+link:#conventions[5. Conventions 7]
+
+link:#identifiers[5.1 Identifiers 7]
+
+link:#cdb-approach[6. CDB Approach 7]
+
+link:#cdb-spatial-reference-systems[6.1 CDB Spatial Reference Systems 7]
+
+link:#the-three-systems[7. The Three Systems 9]
+
+link:#geographic-coordinate-system-geodetic[7.1 Geographic Coordinate System (Geodetic) 9]
+
+link:#earth-centered-srs-aka-rectangular-geocentric-srs[7.1.1 Earth-Centered SRS (aka Rectangular Geocentric SRS) 10]
+
+link:#general-cartesian-srs[7.1.2 General Cartesian SRS 10]
+
+link:#local-vertical-srs[7.1.3 Local Vertical SRS 11]
+
+link:#geodetic-to-geocentric-transformation[7.2 Geodetic to Geocentric transformation 11]
+
+link:#geocentric-to-geodetic-transformation[7.3 Geocentric to Geodetic Transformation 12]
+
+link:#geodetic-to-lvcs-coordinate-transformation[7.4 Geodetic to LVCS Coordinate Transformation 13]
+
+link:#angular-displacements-to-linear-displacement[7.5 Angular Displacements to Linear Displacement 14]
+
+link:#d-model-coordinate-system[7.6 3D Model Coordinate System 15]
+
+a.  Abstract
+
+Volume 8 of the CDB standard defines the conceptual model and the methodologies that allow the description, and transformation or conversion, of geometric properties within a set of spatial reference frames supported by the CDB standard. The CDB Spatial Reference Model (SRM) supports an unambiguous specification of the positions, directions, and distances associated with spatial information. This document also defines algorithms for precise transformation of positions, directions and distances among different spatial reference frames.
+
+In previous versions of the CDB standard, this CDB volume was Appendix K in CDB Version 3.2 as submitted to the OGC.
+
+a.  Keywords
+
+The following are keywords to be used by search engines and document catalogues.
+
+ogcdoc, OGC document, cdb, spatial reference model, srm, coordinate systems, crs, srs
+
+a.  Preface
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
+
+_Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation._
+
+a.  Submitting organizations
+
+The following organizations submitted this Document to the Open Geospatial Consortium (OGC):
+
+_____________________________________
+CAE Inc. +
+Carl Reed, OGC Individual Member +
+Envitia, Ltd +
+Glen Johnson, OGC Individual Member +
+KaDSci, LLC +
+Laval University +
+Open Site Plan +
+University of Calgary +
+UK Met Office
+_____________________________________
+
+The OGC CDB standard is based on and derived from an industry developed and maintained specification, which has been approved and published as OGC Document 15-003: OGC Common DataBase Volume 1 Main Body. An extensive listing of contributors to the legacy industry-led CDB specification is at Chapter 11, pp 475-476 in that OGC Best Practices Document (https://portal.opengeospatial.org/files/?artifact_id=61935 ).
+
+a.  Submitters
+
+All questions regarding this submission should be directed to the editor or the submitters:
+
+[cols=",",]
+|=================================
+|Name |Affiliation
+|Carl Reed |Carl Reed & Associates
+|David Graham |CAE Inc.
+|=================================
+
+a.  [[_Toc445727697]]Document Organization
+
+For ease of editing and review, the standard has been separated into 12 Volumes and a schema repository.
+
+* ________________________________________________________________________
+Volume 0: OGC CDB Companion Primer for the CDB standard. (Best Practice)
+________________________________________________________________________
+* _________________________________________________________________________
+Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure.
+_________________________________________________________________________
+
+_____________________________________________________
+The main body (core) of the CBD standard (Normative).
+_____________________________________________________
+
+* Volume 2: OGC CDB Core Model and Physical Structure Annexes (Best Practice).
+
+* ____________________________________________________
+Volume 3: OGC CDB Terms and Definitions (Normative).
+____________________________________________________
+* ____________________________________________________________________________
+Volume 4: OGC CDB Use of Shapefiles for Vector Data Storage (Best Practice).
+____________________________________________________________________________
+* ___________________________________________________________________
+Volume 5: OGC CDB Radar Cross Section (RCS) Models (Best Practice).
+___________________________________________________________________
+* ___________________________________________________________________________
+Volume 6: OGC CDB Rules for Encoding Data using OpenFlight (Best Practice).
+___________________________________________________________________________
+* ______________________________________________________
+Volume 7: OGC CDB Data Model Guidance (Best Practice).
+______________________________________________________
+* ____________________________________________________________________
+Volume 8: OGC CDB Spatial Reference System Guidance (Best Practice).
+____________________________________________________________________
+* _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Volume 9: OGC CDB Schema Package: provides the normative schemas for key features types required in the synthetic modelling environment. Essentially, these schemas are designed to enable semantic interoperability within the simulation context. (Normative)
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+* ___________________________________________________________
+Volume 10: OGC CDB Implementation Guidance (Best Practice).
+___________________________________________________________
+* _____________________________________________________________
+Volume 11: OGC CDB Core Standard Conceptual Model (Normative)
+_____________________________________________________________
+* _________________________________________________________________________________________________
+Volume 12: OGC CDB Navaids Attribution and Navaids Attribution Enumeration Values (Best Practice)
+_________________________________________________________________________________________________
+
+= Scope
+
+The handling of spatial data requires a good deal of rigor to accurately describe the position of points in space. Furthermore, it requires the ability to define directions and distances. Generally, this is accomplished through the use of coordinate systems.
+
+A coordinate system (also called a spatial reference system) is a means of assigning coordinates to a location and establishing relationships between sets of such coordinates. Specifying a coordinate reference system enables the interpretation of a set of coordinates as a representation of a position in a real world space.
+
+In the CDB standard, these terms can be used interchangeably. However, for consistency with previous versions of the CDB standard, the term spatial reference system (SRS) is used.
+
+There is often the requirement to represent position in several different spatial reference systems. Each spatial reference system provides a particular way of defining positions within its domain. This level of abstraction also permits spatial reference systems to be decomposed into a series of, or even a hierarchy of reference, each relative to another reference system. This mechanism permits objects to be independently defined (positioned, oriented, and scaled) with respect to a local SRS and then be later incorporated into other reference systems. The reference systems can be abstract mathematical constructs or they can be bound to real world objects (e.g., a flap located defined in a flap reference system which in turn is bound to an aircraft wing reference system).
+
+= Conformance
+
+There are no conformance classes in this document
+
+= References
+
+The following normative documents contain provisions that, through reference in this text, constitute provisions of this document. For dated references, subsequent amendments to, or revisions of, any of these publications do not apply. For undated references, the latest edition of the normative document referred to applies.
+
+ISO: ISO 19111:2007, _Geographic information ― Spatial referencing by coordinates_, 2007
+
+= Terms and Definitions
+
+This document uses the terms defined in Sub-clause 5.3 of [OGC 06-121r8], which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word “shall” (not “must”) is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
+
+Any terms and definitions for this CDB document may be found in Volume 3: CDB Terms and Definitions (http://www.opengeospatial.org/standards/cdb).
+
+= Conventions
+
+This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+
+== Identifiers
+
+There are no normative provisions in this document.
+
+= CDB Approach
+
+One of the primary objectives of the CDB standard is to provide the means to represent the entire earth. As such, a CDB compliant data store must handle spatial data with a good deal of rigor to accurately describe the position of points in space and must do so at the level of fidelity commensurate with the precision that is now possible in modern simulators.
+
+The size, content, fidelity and precision of synthetic environments now warrant a different approach, an approach that entirely avoids the “problem with projections” and other approximations used in the past. To this end, the CDB standard mandates the use a *geographic coordinate system* (GCS). A GCS uses a three-dimensional spherical surface to define locations on the earth. Since no projections are involved, full geometric coherence is assured without compromise and all four key spatial properties can be achieved simultaneously:
+
+1.  Preservation of distance
+2.  Preservation of direction
+3.  Preservation of area
+4.  Preservation of shape
+
+== CDB Spatial Reference Systems
+
+The CDB standard is based on a surface geodetic coordinate system, i.e., points on the earth surface are specified as geographic latitude -longitude and elevation coordinates. More specifically, geodetic coordinates (sometimes called geographic coordinates) are angular coordinates (longitude and latitude), closely related to spherical polar coordinates, and are defined relative to a particular Earth geodetic datum. For the CDB, this is the WGS 84 datum. The WGS 84 datum surface is an https://en.wikipedia.org/wiki/Oblate_spheroid[oblate spheroid] (ellipsoid) with major (equatorial) radius _a_ = 6378137 m at the https://en.wikipedia.org/wiki/Equator[equator] and https://en.wikipedia.org/wiki/Flattening[flattening] _f_ = 1/298.257223563.https://en.wikipedia.org/wiki/World_Geodetic_System#cite_note-Third_Edition_2000-6[^[6]^] The polar semi-minor axis _b_ then equals _a_ times (1−__f__), or 6356752.3142 m.
+
+The CDB data store embeds modeled point features (e.g., the representation of 3-D objects, moving and/or static) within a Cartesian Coordinate Systemfootnote:[. A *Cartesian coordinate system* is a https://en.wikipedia.org/wiki/Coordinate_system[coordinate system] that specifies each https://en.wikipedia.org/wiki/Point_%28geometry%29[point] uniquely in a https://en.wikipedia.org/wiki/Plane_%28geometry%29[plane] by a pair of https://en.wikipedia.org/wiki/Number[numerical] *coordinates*, which are the https://en.wikipedia.org/wiki/Positive_and_negative_numbers[signed] distances to the point from two fixed https://en.wikipedia.org/wiki/Perpendicular[perpendicular] directed lines, measured in the same https://en.wikipedia.org/wiki/Unit_length[unit of length]]. Its use is generally constrained to objects that are small in comparison to the earth. As shown below, a modeled point feature can be referenced anywhere on the earth by providing the model’s orientation (the AO1 attribute specified in Chapter 5 of Volume 1: OGC CDB Core Standard: Model and Physical Database Structure) and the model’s origin using a set of latitude/longitude/elevation coordinates. Note that the model’s z-axis implicitly points upward with respect to the earth surface.
+
+image:images/media/image1.jpeg[untitled1,width=448,height=314]
+
+Figure 1: Cartesian Model positioned to WGS-84 Coordinates
+
+The earth shape is described by the WGS-84 reference ellipsoid. The CDB standard also defines three related set of Spatial Reference Systems (and associated coordinate systems) for use in conjunction with the surface geodetic coordinate system; they are:
+
+1.  Earth-centered Cartesian (Geocentric)
+2.  Generic Cartesian
+3.  Local Vertical (LVCS)
+
+= The Three Systems
+
+The following sections detail the normative aspects of the three Spatial Reference Systems (SRS) supported in the CDB model. We start with a general discussion of the Geographical Coordinate System before addressing the Spatial Reference Systems.
+
+== Geographic Coordinate System (Geodetic)
+
+A geographic coordinate system (also called the geodetic coordinate system) is one in which the coordinates are expressed as latitude, longitude, and altitude relative to the reference ellipsoid. Geographical latitude _φ_ and longitude _λ_ are the angles of the normal on the reference ellipsoid along the point to the equator and zero meridian. The angles are normally given as degrees, minutes and seconds. Altitude is the distance above and normal to the reference ellipsoid in meters. The WGS 84 ellipsoid represents the actual geoid within an accuracy of 100 meters. The prime meridian and the equator are the reference planes used to define latitude and longitude.
+
+In other terms, the geographic latitude – there are many other defined latitudes – of a point is the angle between the equatorial plane and a line normal to the reference ellipsoid’s surface. The geographic longitude of a point is the angle between a reference plane, Greenwich, and a plane passing through the point, both planes being perpendicular to the equatorial plane. The geographic height at a point is the distance from the reference ellipsoid to the point in a direction normal to the reference ellipsoid.
+
+Table 1: Geographic Coordinate System (Geodetic)
+
+[cols=",",]
+|======================================================================================================
+|*Field* |*Specification*
+|Properties |Orthogonal.
+|CS parameters and constraints a|
+_a_: major semi-axis length
+
+_b_: minor semi-axis length
+
+Constraints: _a_ > _b_: (oblate ellipsoid)
+
+|Coordinate components a|
+_λ_ : longitude in radians, and
+
+_φ_ : geodetic latitude in radians.
+
+|Domain of the generating function or mapping equations |
+|Domain of the inverse of the generating function or mapping equations |
+|Notes a|
+1.  The CS surface is the oblate ellipsoid (or sphere) surface excluding the pole points.
+2.  The geodetic 3D CS induces this CS on the 3^rd^ coordinate surface at any point for which _h_ = 0.
+3.  If a = b, the geodetic latitude φ coincides with the spherical latitude θ.
+4.  For WGS-84 a= 6,378,137 m and b = 6,356,752 m. The inverse flattening ratio f^-1^ is 298.257223563.
+
+|======================================================================================================
+
+=== Earth-Centered SRS (aka Rectangular Geocentric SRS)
+
+The earth-centered SRS defines a three-dimensional Euclidian space with respect to the geometric center of the reference ellipsoid, the center of the earth. The reference datum of the Earth-centered SRS is based on the WGS-84 ellipsoid reference model. In this SRS, the z-axis is pointing at the North Pole, the x-axis is pointing at the intersection of the equator and the Greenwich meridian, the prime meridian, and the y-axis is pointing at the intersection of the equator and 90^o^ east longitude. The associated coordinate system is called the World Coordinate System and its units are meters. The world coordinate system is used to specify the 3D position of objects with respect to the earth-centered SRS. This coordinate system is used as an intermediate system to convert geodetic coordinates to LVCS and vice versa
+
+=== General Cartesian SRS
+
+The Cartesian spatial reference frame defines a three-dimensional Euclidian space with respect to an arbitrary origin. The reference datum specifying the origin and the orientation of the SRS is arbitrary, i.e. the reference datum can be specified within a geocentric SRS, a LVCS SRS or any other SRS. The SRS is right-handed and orthonormal. In this SRS system, the z-axis is pointing up and both the x-axis and y-axis lie in the horizontal plane. The associated coordinate system is called the General Cartesian Coordinate System; coordinates are specified in meters. This coordinate system is used for the representation of 3-D objects, moving and/or static. Its use is generally constrained to objects that are small in comparison to the earthfootnote:[To ensure that the object preserves its shape, size, orientation, and relative geometry.].
+
+=== Local Vertical SRS
+
+The Local Vertical SRS (LVCS) spatial reference frame defines a three-dimensional Euclidian space. It is a SRF similar to the Geocentric SRF except that the origin of the SRF is translated and rotated to a point on the surface of the WGS-84 ellipsoid. At that point, the x-y plane is tangent to the surface of the earth and the z-axis is normal to the ellipsoid. The associated coordinate system is called the local vertical coordinate system; the coordinates are specified in meters. In this coordinate system, the z-axis is pointing up, the y-axis is pointing north and the x-axis is pointing east. Its use is generally constrained to a surface that is small in comparison to the earthfootnote:[To ensure that the object preserves its shape, size, orientation, and direction].
+
+== Geodetic to Geocentric transformationfootnote:[There are many excellent references. A recent one is: http://www.oc.nps.edu/oc2902w/coord/coordcvt.pdf]
+
+The following equations are used to transform geodetic information to geocentric information according to the following:
+
+1.  If <__ϕ__, _λ_, __h__> represents the geodetic coordinates to be transformed, where _ϕ_ is the latitude, _λ_ is the longitude, and _h_ is the WGS84 height above the reference ellipsoid; and
+2.  If <__x,__ __y, z__> represents the geocentric coordinates; then using the WGS84 ellipsoid equatorial radius, a, of 6,378,137.0m and the WGS84 ellipsoid polar radius, b, of 6,356,752.314245m, the flattening _f_, the eccentricity _e_ and the radius of curvature as a function of latitude _N(ϕ)_ are given by equation eq. A-1:
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+From these equations, we define the transformation of each geodetic coordinate as:
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+== Geocentric to Geodetic Transformation
+
+Geocentric coordinates cannot be transformed to the geodetic coordinate system directly. Instead, a successive approximation approach is used to compute the new coordinates. The following describes the algorithm to convert geocentric coordinates <__x,__ __y, z__> to geodetic coordinates <__ϕ__, _λ_, __h__>, where _ϕ_ is the latitude, _λ_ is the longitude, and _h_ is the WGS84 height above the reference ellipsoid. First, using the WGS84 ellipsoid equatorial radius, _a_ = 6,378,137.0 m and the WGS84 ellipsoid polar radius, _b_ = 6,356,752.314245 m, the flattening _f_ and the eccentricity _e_ of the ellipsoid are given by equation A-3:
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+We first compute the longitude _λ_ with equation A-4:
+
+[cols=",",]
+|=======
+| a|
+________
+(eq. A‑)
+________
+
+|=======
+
+We then compute a first approximation of the latitude assuming a spherical earth model with equation A-5:
+
+[cols=",",]
+|=======
+| a|
+________
+(eq. A‑)
+________
+
+|=======
+
+Then, we iteratively compute the radius of curvature as a function of latitude _N(ϕ)_ and, as a result we iteratively converge to a new, more accurate latitude _ϕ’_ with equation A-6:
+
+[cols=",",]
+|=======
+| a|
+________
+(eq. A‑)
+________
+
+|=======
+
+For each iteration, _*ϕ*_ is replaced with _ϕ’_, until the difference between the two values is less than a preset allowable error. The resulting latitude error will be less than _*ε*_. Finally, we compute the height above the reference ellipsoid _h_ with equation A-7
+
+[cols=",",]
+|=======
+| a|
+________
+(eq. A‑)
+________
+
+|=======
+
+== Geodetic to LVCS Coordinate Transformation
+
+The transformation of a geodetic coordinate into an LVCS coordinate is decomposed into two parts:
+
+1.  Apply a coordinate transformation to each coordinate of an object from the geodetic coordinate system to the rectangular geocentric coordinate system.
+2.  Then apply a second transformation to go from the geocentric coordinate system to LVCS.
+
+The first transformation, from geodetic to rectangular geocentric is described in section K.4. The transformation is applied to the origin of the object. The result of this transformation is the origin x~0~ of the object in the geocentric coordinate system. Then for each coordinate x of the object, we apply the geodetic to geocentric transformation to coordinate x and we then compute the translation vector t between x and x~0~ in the geocentric coordinate system with equation A-8
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+| |
+|==========
+
+The second transformation, from geocentric to LVCS is presented here as an algorithm to transform all coordinates of an object from the geodetic coordinate system to LVCS. The transformation from geodetic to LVCS first requires the assembly of a 3x3 rotation matrix M with equation A-9:
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+Where: _ϕ**~0~**_ and _λ**~0~**_ = the latitude and longitude of the origin of the object.
+
+Finally, the rotation matrix M is applied to the translation vector t to obtain each coordinate *x~L~* in the local vertical coordinate system with equation A-10:
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+== Angular Displacements to Linear Displacement
+
+For WGS84, which is an elliptical representation of the earth, the transformation from angular displacements to equivalent linear displacements in a tangential plane is slightly different than that for a spherical earth.
+
+For WGS84 we get…
+
+_____________________________________
+… as opposed to for a spherical earth
+_____________________________________
+
+where…
+
+are the linear displacements along the x and y axes.
+
+are the meridional and transverse radiuses of curvature.
+
+is the radius of the spherical earth.
+
+are small displacements at location _lat/lon_
+
+we have…
+
+where…
+
+________________________________________________________
+_e^2^_ is the square of the eccentricity
+
+_a,b_ are the semi-major and the minor axes of the earth
+
+_f_ is the flattening
+________________________________________________________
+
+This section describes the transformations required to go to-and-from the DIS/HLA and the CDB moving model coordinate systems.
+
+== 3D Model Coordinate System
+
+The CDB 3D model coordinate system conventions are presented earlier in the OGC CDB Rules for Encoding Data using OpenFlight Best Practice.
+
+image:images/media/image25.png[CDB Coordinate System,width=289,height=221]
+
+*Figure* *2: CDB 3D Model Coordinate System*
+
+The DIS coordinate system is used on a HLA network and is represented on the following figure.
+
+image:images/media/image26.png[DOF,width=290,height=235]
+
+*Figure* **3: DIS Entity**footnote:[DIS refers to a 3D model as an entity.] *Coordinate System*
+
+The two coordinate systems differ in the axis conventions (Z is up in the CDB while Z is down in DIS). Furthermore, the position of the origin also differs; DIS requires that the origin of its coordinate system be located at the center of the entity’s bounding box excluding its articulated and attached partsfootnote:[This definition can be found on page 3 of IEEE Std 1278.1-1995. Note that the CDB provides the means to store the DIS origin within the coordinate system space of the model.]. The CDB standard uses a different convention.
+
+The transformation from the CDB coordinate system to the DIS coordinate system involves one translation followed by two rotations. The translation represents the offset to the DIS origin as defined in chapter 6. Assume that P~0~ represents the coordinate of the DIS origin.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+The two rotations are relatively simple. First, rotate 180° about the X-axis. This rotation will position the Z-axis in its correct position. Equation A-12 represents this rotation.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+Second, rotate -90° about this new Z-axis. This last rotation completes the transformation and is represented by equation A-13.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+Now, if we combine equations A-11, A-12 and A-13, we can transform a point P expressed in the CDB coordinate system into point P’ in the DIS coordinate system. Equation A-14 presents the complete transformation.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+The combined matrix gives equation A-15 and the resulting individual terms are presented in A-16.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+If a single transformation matrix M is preferred then Matrix M~zx~ and point P~0~ are combined to obtain the set of equations A-17.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+To convert from the DIS coordinate system back to the CDB coordinate system, the inverse transformation is applied. Knowing that unscaled rotation matrices (the upper 3 x 3 portion of M) have the property that their inverse is their transpose, we obtain the set of equations A-18.
+
+[cols=",",]
+|==========
+| |(eq. A‑)
+|==========
+
+Annex A: Revision history
+
+[cols=",,,,",]
+|=================================================================================
+|Date |Release |Editor |Paragraph modified |Description
+|2/5/2016 |1.0 |C. Reed |Various |Prepare as version 1.
+|3/8/2016 |1.0 |C. Reed |Various |Modify based on 3/8/2016 SWG discussions
+|6/22/2016 |1.0r2 |C.Reed |Various |Correct ambiguity WRT how altitude is defined.
+|10/7/2016 |R3 |C. Reed |Various |Final edits for publication
+|11/21/2016 |1.0 |C. Reed | |Ready for publication
+|12/28/2017 |1.1 |C. Reed |Minimal |Update for version 1.1. Very minor edits.
+|=================================================================================

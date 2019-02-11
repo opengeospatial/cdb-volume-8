@@ -1,0 +1,12 @@
+== Scope
+
+
+The handling of spatial data requires a good deal of rigor to accurately describe the position of points in space. Furthermore, it requires the ability to define directions and distances. Generally, this is accomplished through the use of coordinate systems.
+
+A coordinate system (also called a spatial reference system) is a means of assigning coordinates to a location and establishing relationships between sets of such coordinates. Specifying a coordinate reference system enables the interpretation of a set of coordinates as a representation of a position in a real world space.
+
+In the CDB standard, these terms can be used interchangeably. However, for consistency with previous versions of the CDB standard, the term spatial reference system (SRS) is used.
+
+There is often the requirement to represent position in several different spatial reference systems. Each spatial reference system provides a particular way of defining positions within its domain. This level of abstraction also permits spatial reference systems to be decomposed into a series of, or even a hierarchy of reference, each relative to another reference system. This mechanism permits objects to be independently defined (positioned, oriented, and scaled) with respect to a local SRS and then be later incorporated into other reference systems. The reference systems can be abstract mathematical constructs or they can be bound to real world objects (e.g., a flap located defined in a flap reference system which in turn is bound to an aircraft wing reference system).
+
+
