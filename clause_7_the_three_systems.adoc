@@ -6,7 +6,7 @@ The following sections detail the normative aspects of the three Spatial Referen
 
 A geographic coordinate system (also called the geodetic coordinate system) is one in which the coordinates are expressed as latitude, longitude, and altitude relative to the reference ellipsoid. Geographical latitude _φ_ and longitude _λ_ are the angles of the normal on the reference ellipsoid along the point to the equator and zero meridian. The angles are normally given as degrees, minutes and seconds. Altitude is the distance above and normal to the reference ellipsoid in meters. The WGS 84 ellipsoid represents the actual geoid within an accuracy of 100 meters. The prime meridian and the equator are the reference planes used to define latitude and longitude.
 
-In other terms, the geographic latitude – there are many other defined latitudes – of a point is the angle between the equatorial plane and a line normal to the reference ellipsoid’s surface. The geographic longitude of a point is the angle between a reference plane, Greenwich, and a plane passing through the point, both planes being perpendicular to the equatorial plane. The geographic height at a point is the distance from the reference ellipsoid to the point in a direction normal to the reference ellipsoid. 
+In other terms, the geographic latitude – there are many other defined latitudes – of a point is the angle between the equatorial plane and a line normal to the reference ellipsoid’s surface. The geographic longitude of a point is the angle between a reference plane, Greenwich, and a plane passing through the point, both planes being perpendicular to the equatorial plane. The geographic height at a point is the distance from the reference ellipsoid to the point in a direction normal to the reference ellipsoid.
 
 *Table 1: Geographic Coordinate System (Geodetic)*
 
@@ -27,7 +27,9 @@ _λ_ : longitude in radians, and
 _φ_ : geodetic latitude in radians.
 
 |Domain of the generating function or mapping equations a| image::images/math1.png[width=150]
+[white]#.#
 |Domain of the inverse of the generating function or mapping equations a| image::images/math2.png[width=300]
+[white]#.#
 |Notes a|
 1.  The CS surface is the oblate ellipsoid (or sphere) surface excluding the pole points.
 2.  The geodetic 3D CS induces this CS on the 3^rd^ coordinate surface at any point for which _h_ = 0.
@@ -59,11 +61,16 @@ The following equations are used to transform geodetic information to geocentric
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[f = \frac{a - b}{a}\]
 
 \[e^2 = 2f - f^2\]
 
 \[N(φ) = \frac{a}{\sqrt[]{1 - e^2 \sin^2 φ }}\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a1.png[]
+endif::[]
 
 |(eq. A‑1)
 |==========
@@ -74,11 +81,16 @@ From these equations, we define the transformation of each geodetic coordinate a
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[x = (N(φ)+h) \cos φ \cos λ \]
 
 \[y = (N(φ)+h) \cos φ \sin λ \]
 
 \[z = (N(φ)(1-e^2)+h) \sin φ\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a2.png[]
+endif::[]
 
 |(eq. A‑2)
 |==========
@@ -90,9 +102,16 @@ Geocentric coordinates cannot be transformed to the geodetic coordinate system d
 [cols="3,1",]
 |==========
 a|
+
+
+ifndef::backend-pdf[]
 \[f = \frac{a - b}{a}\]
 
 \[e^2 = 2f - f^2\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a3.png[]
+endif::[]
 
 |(eq. A‑3)
 |==========
@@ -103,7 +122,12 @@ We first compute the longitude _λ_ with equation A-4:
 |=======
 a|
 
+ifndef::backend-pdf[]
 \[λ = \tan ^{ - 1} \bigg(\frac{y}{x}\bigg)\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a4.png[]
+endif::[]
 
 | (eq. A‑4)
 |=======
@@ -114,7 +138,14 @@ We then compute a first approximation of the latitude assuming a spherical earth
 |=======
 a|
 
+
+
+ifndef::backend-pdf[]
 \[φ = \tan ^{ - 1} \bigg(\frac{z}{\sqrt[]{x^2 + y^2}}\bigg)\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a5.png[]
+endif::[]
 
 |(eq. A‑5)
 |=======
@@ -125,7 +156,12 @@ Then, we iteratively compute the radius of curvature as a function of latitude _
 |=======
 a|
 
+ifndef::backend-pdf[]
 \[N(φ) = \frac{a}{\sqrt[]{ 1 - e^2 \sin^2 φ }}\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a6.png[]
+endif::[]
 
 |(eq. A‑6)
 |=======
@@ -136,7 +172,12 @@ For each iteration, *_ϕ_* is replaced with _ϕ’_, until the difference betwee
 |=======
 a|
 
+ifndef::backend-pdf[]
 \[ h = \frac{\sqrt[]{x^2 + y^2}}{\cos φ} - N(φ) \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a7.png[]
+endif::[]
 
 | (eq. A‑7)
 |=======
@@ -153,7 +194,14 @@ The first transformation, from geodetic to rectangular geocentric is described i
 [cols="3,1",]
 |==========
 a|
+
+ifndef::backend-pdf[]
 \[t = x - x_0\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a8.png[]
+endif::[]
+
 |(eq. A‑8)
 |==========
 
@@ -163,6 +211,7 @@ The second transformation, from geocentric to LVCS is presented here as an algor
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ M =
  \begin{bmatrix}
   -\sin λ_0 & \cos λ_0 & 0 \\
@@ -170,6 +219,10 @@ a|
   \cos φ_0 \cos λ_0 & \cos φ_0 \sin λ_0 & \sin φ_0
  \end{bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a9.png[]
+endif::[]
 
 |(eq. A‑9)
 |==========
@@ -182,7 +235,12 @@ Finally, the rotation matrix M is applied to the translation vector t to obtain 
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[x_L = Mt\]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a10.png[]
+endif::[]
 
 |(eq. A‑10)
 |==========
@@ -193,15 +251,25 @@ For WGS84, which is an elliptical representation of the earth, the transformatio
 
 For WGS84 we get…
 
+ifndef::backend-pdf[]
 \[\delta  X = \rho _t \cos (lat) \delta lon \]
 
 \[\delta  Y = \rho _m \delta lat \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/wgs84.png[]
+endif::[]
 
 … as opposed to for a spherical earth
 
+ifndef::backend-pdf[]
 \[\delta  X = \rho \cos (lat) \delta lon \]
 
 \[\delta  Y = \rho \delta lat \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/earth.png[]
+endif::[]
 
 where…
 
@@ -215,6 +283,7 @@ _δlat_, _δlon_ are small displacements at location _lat/lon_
 
 we have…
 
+ifndef::backend-pdf[]
 \[ \rho _m = \frac{a(1 - e^2)}{\big[1 - e^2 \sin^2 (lat)\big] ^{3/2}} \]
 
 \[ \rho _t = \frac{a}{\sqrt[]{1 - e^2 sin^2 (lat)}} \]
@@ -222,6 +291,10 @@ we have…
 \[ e^2 = 1 - \frac{b ^2}{a ^2} \]
 
 \[ f = \frac{a - b}{a} \Rightarrow b = a (1 - f) \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/wehave.png[]
+endif::[]
 
 where…
 
@@ -256,7 +329,12 @@ The transformation from the CDB coordinate system to the DIS coordinate system i
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ P_0 = (x_0, y_0, z_0) \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a11.png[]
+endif::[]
 
 |(eq. A‑11)
 |==========
@@ -267,6 +345,7 @@ The two rotations are relatively simple. First, rotate 180° about the X-axis. T
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ M_x =
  \begin{Bmatrix}
   1 & 0 & 0 \\
@@ -274,6 +353,10 @@ a|
   0 & 0 & -1
  \end{Bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a12.png[]
+endif::[]
 
 |(eq. A‑12)
 |==========
@@ -284,6 +367,7 @@ Second, rotate -90° about this new Z-axis. This last rotation completes the tra
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ M_z =
  \begin{Bmatrix}
   0 & -1 & 0 \\
@@ -291,6 +375,10 @@ a|
   0 & 0 & 1
  \end{Bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a13.png[]
+endif::[]
 
 |(eq. A‑13)
 |==========
@@ -301,7 +389,12 @@ Now, if we combine equations A-11, A-12 and A-13, we can transform a point P exp
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ P' = M_z M_x (P - P_0) \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a14.png[]
+endif::[]
 
 |(eq. A‑14)
 |==========
@@ -312,6 +405,7 @@ The combined matrix gives equation A-15 and the resulting individual terms are p
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ M_zx =
  \begin{Bmatrix}
   0 & 1 & 0 \\
@@ -319,6 +413,10 @@ a|
   0 & 0 & -1
  \end{Bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a15.png[]
+endif::[]
 
 |(eq. A‑15)
 |==========
@@ -327,11 +425,16 @@ a|
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ x = y - y_0 \]
 
 \[ y = x - x_0 \]
 
 \[ z' = z_0 - z \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a16.png[]
+endif::[]
 
 |(eq. A‑16)
 |==========
@@ -344,6 +447,7 @@ If a single transformation matrix M is preferred then Matrix M~zx~ and point P~0
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ P' = MP \]
 
 \[where\]
@@ -367,6 +471,10 @@ a|
   1
  \end{Bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a17.png[]
+endif::[]
 
 
 |(eq. A‑17)
@@ -378,6 +486,7 @@ To convert from the DIS coordinate system back to the CDB coordinate system, the
 |==========
 a|
 
+ifndef::backend-pdf[]
 \[ P = M^{-1} P' \]
 
 \[where\]
@@ -390,6 +499,10 @@ a|
   0 & 0 & 0 & 1
  \end{Bmatrix}
 \]
+endif::[]
+ifdef::backend-pdf[]
+image::math/a17.png[]
+endif::[]
 
 |(eq. A‑18)
 |==========
