@@ -11,4 +11,5 @@
 |2016-07-10 |R3 |C. Reed |Various |Final edits for publication
 |2016-11-21 |1.0 |C. Reed | |Ready for publication
 |2017-12-28 |1.1 |C. Reed |Minimal |Update for version 1.1. Very minor edits.
+|2019-12-16 |1.2 |C. Reed | Various |Changes for version 1.2
 |===
