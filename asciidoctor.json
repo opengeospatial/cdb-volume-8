@@ -1,0 +1,12 @@
+{
+        "1": {
+                "OGC_doc_number": "16-011r5",
+                "urn":"http://www.opengis.net/doc/BP/CDB-SRF/1.2",
+                "title":"Volume 8: OGC CDB Spatial Reference System Guidance (Best Practice)",
+                "path":"standard_document.adoc",
+                "options": ["--trace"],
+                "a":[
+                        "data-uri"
+                ]
+        }
+}
