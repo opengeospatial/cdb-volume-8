@@ -9,7 +9,7 @@ In previous versions of the CDB standard, this CDB volume was Appendix K in CDB 
 
 The following are keywords to be used by search engines and document catalogues.
 
-ogcdoc, OGC document,  ogcdoc,  cdb, spatial reference model, srm, coordinate systems, crs, srs
+ogcdoc, OGC document, cdb, spatial reference model, srm, coordinate systems, crs, srs
 
 [big]*iii.   Preface*
 
@@ -62,11 +62,10 @@ For ease of editing and review, the standard has been separated into 16 Volumes,
 * Volume 6: OGC CDB Rules for Encoding CDB Models using OpenFlight (Best Practice).
 * Volume 7: OGC CDB Data Model Guidance (Best Practice).
 * Volume 8: OGC CDB Spatial Reference System Guidance (Best Practice).
-* Volume 9: OGC CDB Schema Package: http://schemas.opengis.net/cdb/ provides the normative schemas for key features types required in the synthetic modelling environment. Essentially, these schemas are designed to enable semantic interoperability within the simulation context (Normative).
+* Volume 9: OGC CDB Schema Package: http://schemas.opengis.net/cdb/ provides the normative schemas for key features types required in the synthetic modeling environment. Essentially, these schemas are designed to enable semantic interoperability within the simulation context (Normative).
 * Volume 10: OGC CDB Implementation Guidance (Best Practice).
 * Volume 11: OGC CDB Core Standard Conceptual Model (Normative).
 * Volume 12: OGC CDB Navaids Attribution and Navaids Attribution Enumeration Values (Best Practice).
 * Volume 13: OGC CDB Rules for Encoding CDB Vector Data using GeoPackage (Normative, Optional Extension).
 * Volume 14: OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice).
 * Volume 15: OGC CDB Optional Multi-Spectral Imagery Extension (Normative).
-
