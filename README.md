@@ -1,4 +1,4 @@
-# Standard template
+# OGC CDB Volume 8 Spatial Reference System Guidance
 
 ## Content
 
