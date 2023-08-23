@@ -25,13 +25,8 @@ Organization name(s)
 
 * CAE Inc.
 * Carl Reed, OGC Individual Member
-* Envitia, Ltd
-* Glen Johnson, OGC Individual Member
-* KaDSci, LLC
-* Laval University
-* Open Site Plan
-* University of Calgary
-* UK Met Office
+
+[red]#*_Placeholder# for the list of CDB SWG Voting Members who cast a ballot in the SWG eVote approving the draft document for submission to the OAB and request for public comment_*
 
 The OGC CDB standard is based on and derived from an industry developed and maintained specification, which has been approved and published as OGC Document 15-003: OGC Common DataBase Volume 1 Main Body. An extensive listing of contributors to the legacy industry-led CDB specification is at Chapter 11, pp 475-476 in that OGC Best Practices Document (https://portal.opengeospatial.org/files/?artifact_id=61935 ).
 
@@ -51,7 +46,7 @@ All questions regarding this submission should be directed to the editor or the 
 
 [big]*vi.  Document Organization*
 
-For ease of editing and review, the standard has been separated into 16 Volumes, one being a schema repository.
+For ease of editing and review, the standard has been separated into 15 Volumes and a schema repository.
 
 * Volume 0: OGC CDB Companion Primer for the CDB standard (Best Practice).
 * Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure. The main body (core) of the CDB standard (Normative).
@@ -68,4 +63,4 @@ For ease of editing and review, the standard has been separated into 16 Volumes,
 * Volume 12: OGC CDB Navaids Attribution and Navaids Attribution Enumeration Values (Best Practice).
 * Volume 13: OGC CDB Rules for Encoding CDB Vector Data using GeoPackage (Normative, Optional Extension).
 * Volume 14: OGC CDB Guidance on Conversion of CDB Shapefiles into CDB GeoPackages (Best Practice).
-* Volume 15: OGC CDB Optional Multi-Spectral Imagery Extension (Normative).
+* OGC CDB Optional Multi-Spectral Imagery Extension (Normative).

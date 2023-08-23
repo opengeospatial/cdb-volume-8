@@ -54,7 +54,7 @@ topic.
 |===
 |Document type:   	    OGC® Best Practice
 |Document subtype:   
-|Document stage:   	Approved
+|Document stage:   	Draft
 |Document language: 	English
 |===
 
